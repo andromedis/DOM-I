@@ -46,7 +46,6 @@ console.log(title);
 title = "Great Idea!";
 console.log(title); // Changed here but not live...FIX
 
-const br = document.createElement('br');
 
 // Update nav bar items text
 {
@@ -63,7 +62,8 @@ const br = document.createElement('br');
 // Update section .cta
 {
   let ctaHeader = document.querySelector('.cta h1');
-  ctaHeader.textContent = siteContent.cta.h1;
+  let ctaHeaderHTML = siteContent.cta.h1.split(' ').join('<br/>');
+  ctaHeader.innerHTML = ctaHeaderHTML;
 
   let ctaButton = document.querySelector('.cta button');
   ctaButton.textContent = siteContent.cta.button;
@@ -112,19 +112,13 @@ const br = document.createElement('br');
   contactH4.textContent = siteContent.contact["contact-h4"];
 
   let address = document.querySelectorAll('.contact p')[0];
-  
-  let addressArray = siteContent.contact.address.split(' ');
-  console.log(`addressArray: ${addressArray}`);
-  let addressLine1 = addressArray.slice(0, 4).join(' ');
-  console.log(`addressLine1: ${addressLine1}`);
-  let addressLine2 = addressArray.slice(4).join(' ');
-  console.log(`addressLine2: ${addressLine2}`);
-
-  address.textContent = `${addressLine1}\n${addressLine2}`;
-  
+  let addressWords = siteContent.contact.address.split(' ');
+  let addressHTML = [addressWords.slice(0, 4).join(' '), '<br/>', addressWords.slice(4).join(' ')].join('');
+  address.innerHTML = addressHTML;
   
   let phone = document.querySelectorAll('.contact p')[1];
   phone.textContent = siteContent.contact.phone;
+
   let email = document.querySelectorAll('.contact p')[2];
   email.textContent = siteContent.contact.email;
 }
