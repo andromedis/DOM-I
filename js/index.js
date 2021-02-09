@@ -49,7 +49,7 @@ console.log(title); // Changed here but not live...FIX
 
 // Update nav bar items text
 {
-  const navItems = document.querySelectorAll('nav a');
+  let navItems = document.querySelectorAll('nav a');
 
   navItems[0].textContent = siteContent.nav["nav-item-1"];
   navItems[1].textContent = siteContent.nav["nav-item-2"];
@@ -58,6 +58,17 @@ console.log(title); // Changed here but not live...FIX
   navItems[4].textContent = siteContent.nav["nav-item-5"];
   navItems[5].textContent = siteContent.nav["nav-item-6"];
 
+  let appendA = document.createElement('a');
+  appendA.textContent = 'Append';
+  appendA.href = '#';
+  let prependA = document.createElement('a');
+  prependA.textContent = 'Prepend';
+  prependA.href = '#';
+  
+  document.querySelector('nav').prepend(prependA);
+  document.querySelector('nav').appendChild(appendA);
+
+  navItems = document.querySelectorAll('nav a');
   for(let i = 0; i < navItems.length; i++) {
     navItems[i].style.color = 'green';
   }
@@ -66,7 +77,7 @@ console.log(title); // Changed here but not live...FIX
 // Update section .cta
 {
   let ctaHeader = document.querySelector('.cta h1');
-  let ctaHeaderHTML = siteContent.cta.h1.split(' ').join('<br/>');
+  const ctaHeaderHTML = siteContent.cta.h1.split(' ').join('<br/>');
   ctaHeader.innerHTML = ctaHeaderHTML;
 
   let ctaButton = document.querySelector('.cta button');
@@ -78,7 +89,7 @@ console.log(title); // Changed here but not live...FIX
 
 // Update section .main-content
 {
-  let mainContentH4s = document.querySelectorAll('.main-content h4');
+  const mainContentH4s = document.querySelectorAll('.main-content h4');
   
   let featuresH4 = mainContentH4s[0];
   featuresH4.textContent = siteContent["main-content"]["features-h4"];
@@ -92,7 +103,7 @@ console.log(title); // Changed here but not live...FIX
   visionH4.textContent = siteContent["main-content"]["vision-h4"];
 
 
-  let mainContentPs = document.querySelectorAll('.main-content p');
+  const mainContentPs = document.querySelectorAll('.main-content p');
 
   let featuresContent = mainContentPs[0];
   featuresContent.textContent = siteContent["main-content"]["features-content"];
