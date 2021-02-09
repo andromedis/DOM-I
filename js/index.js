@@ -57,6 +57,10 @@ console.log(title); // Changed here but not live...FIX
   navItems[3].textContent = siteContent.nav["nav-item-4"];
   navItems[4].textContent = siteContent.nav["nav-item-5"];
   navItems[5].textContent = siteContent.nav["nav-item-6"];
+
+  for(let i = 0; i < navItems.length; i++) {
+    navItems[i].style.color = 'green';
+  }
 }
 
 // Update section .cta
